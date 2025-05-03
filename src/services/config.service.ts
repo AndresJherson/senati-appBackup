@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService as NestConfigService } from '@nestjs/config';
+import { join } from 'path';
 
 @Injectable()
 export class ConfigService {
@@ -25,7 +26,7 @@ export class ConfigService {
     }
 
     get pathBackup(): string {
-        return this.configService.get<string>('PATH_BACKUP') ?? '';
+        return this.configService.get<string>('PATH_BACKUP') ?? join( __dirname, 'backups');
     }
 
     get mssqlConfig() {
